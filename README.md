@@ -44,6 +44,12 @@ Customer behavior and loyalty analysis for **Takflix**, a video-on-demand (VOD) 
 
 The gift coefficient shows clear peaks around December–January, reflecting the New Year tradition of buying gift codes for friends and family. Smaller spikes also appear near other holidays throughout the year, suggesting gift-code purchases generally rise around festive occasions. Outside these windows, the coefficient stays relatively stable, in the 2–4 range, indicating that holidays are the main driver of gifting activity — a useful signal for timing future gift-code marketing campaigns.
 
+### Coefficient of Loyalty by Month
+
+![Coefficient of Loyalty by Month](loyal_coeff.png)
+
+The loyalty coefficient grows steadily and almost linearly from under 10 in early 2021 to nearly 100 by early 2023, with no signs of plateauing. Since the metric is cumulative, this steady rise reflects an ever-growing base of loyal, repeat-purchasing customers rather than a seasonal effect — each month adds new loyal customers on top of those retained from previous months. This consistent upward trend is a positive signal for the platform's long-term retention: the loyal customer base is compounding over time rather than churning out.
+
 ## Repository Structure
 
 ```
@@ -51,35 +57,9 @@ The gift coefficient shows clear peaks around December–January, reflecting the
 ├── Takflix.ipynb        # main analysis notebook
 ├── requirements.txt     # Python dependencies
 ├── gift_coeff.png       # gift coefficient chart used in this README
+├── loyal_coeff.png      # loyalty coefficient chart used in this README
 └── README.md
 ```
 
-## Installation
 
-```bash
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-## Usage
-
-1. Place the source `all_tickets (*).xlsx` export files in the working directory.
-2. The notebook was originally written for **Google Colab** and uses `google.colab.files.upload()`. For local execution, replace the upload cell with direct file reads, e.g.:
-
-   ```python
-   import glob
-   dfs = [pd.read_excel(f, engine='openpyxl') for f in glob.glob('all_tickets*.xlsx')]
-   ```
-
-3. Launch Jupyter and run the cells sequentially:
-
-   ```bash
-   jupyter notebook Takflix.ipynb
-   ```
-
-## Notes & Limitations
-
-- The `Owner's Email` column is replaced with randomly generated placeholder values in this notebook to anonymize customer data before sharing/publishing.
-- A couple of cells reference variables (e.g. `loyal_clients_list`) that are not explicitly defined earlier in the visible flow — review the notebook end-to-end before rerunning from scratch.
-- The analysis focuses on transaction-level loyalty and content popularity; it does not yet include revenue/pricing data or churn prediction, which would be natural extensions.
+`
